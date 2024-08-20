@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -200.0
+var SPEED = 0
+var momentum = 0
+const JUMP_VELOCITY = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,16 +20,39 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# Get direction of player (-1 left, 0 unchanged, 1 right)
+	# Get the input direction and handle the movement/deceleration.
+	# Get direction of player (-1 left, 0 unchanged, 1 right)
 	var direction = Input.get_axis("move_left", "move_right")
-	#flip charector
+
+	# Variables for handling movement
+	var acceleration = 40  # Adjust this for faster/slower acceleration
+	var max_speed = 100    # Maximum speed
+	var friction = 10      # Adjust this for faster/slower deceleration
+	var gravity = 10       # Gravity value
+	# Flip character based on direction
 	if direction > 0:
 		sprite.flip_h = false
 	elif direction < 0:
 		sprite.flip_h = true
-	#apply movement
-	if direction:
-		velocity.x = direction * SPEED
+
+	# Apply acceleration or deceleration
+	if is_on_floor():
+		if direction != 0:
+			velocity.x += acceleration * direction
+			velocity.x = clamp(velocity.x, -max_speed, max_speed)  # Clamp velocity to max_speed
+		else:
+			# Decelerate when no input is given
+			if velocity.x > 0:
+				velocity.x = max(0, velocity.x - friction)
+			elif velocity.x < 0:
+				velocity.x = min(0, velocity.x + friction)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	# Apply gravity if in the air
+		velocity.y += gravity
+
+
+	# Apply velocity to the character's position
+	position.x += velocity.x * delta
+	
 
 	move_and_slide()
