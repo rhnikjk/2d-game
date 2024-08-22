@@ -9,7 +9,6 @@ func _ready():
 		coll.polygon = $Polygon2D.polygon
 		add_child(coll)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
