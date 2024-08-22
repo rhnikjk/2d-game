@@ -1,22 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn6y8pk3m14nc"]
+[gd_scene load_steps=5 format=3 uid="uid://cn6y8pk3m14nc"]
 
 [ext_resource type="PackedScene" uid="uid://b10yw1uf5smas" path="res://scenes/player.tscn" id="1_ft5ia"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_o1e4g"]
 [ext_resource type="Script" path="res://scripts/StaticBody2D.gd" id="3_tmxx2"]
+[ext_resource type="Texture2D" uid="uid://dqd7e1k8rsfr4" path="res://sprites/ground.png" id="4_uy082"]
 
 [node name="game" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_ft5ia")]
+scale = Vector2(0.395516, 0.395516)
 script = ExtResource("2_o1e4g")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -77)
-zoom = Vector2(2, 2)
+scale = Vector2(1.0008, 1.00589)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("3_tmxx2")
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+texture_repeat = 2
 color = Color(1.27546e-06, 0.516649, 0.0747707, 1)
-polygon = PackedVector2Array(-287, 6, -137, 4, -70, 17, -20, 22, 21, 15, 82, 3, 157, -7, 197, 15, 258, 5, 292, -15, 409, -7, 489, 19, 611, 1, 711, -34, 763, -84, 841, -130, 1002, -146, 1150, -190, 1254, -214, 1396, -214, 1536, -152, 1590, -115, 1692, -104, 1836, -52, 1993, -52, 2195, -29, 2281, -33, 2409, -46, 2416, 768, -362, 768, -369, -19)
+texture = ExtResource("4_uy082")
+texture_scale = Vector2(0.1, 0.1)
+polygon = PackedVector2Array(-3653, -237, -151, -3, -119, 3, -77, 10, -54, 1, -17, 8, 16, 16, 48, 16, 86, 16, 127, 25, 154, 27, 201, 29, 228, 12, 262, -1, 294, -5, 322, -11, 345, -16, 370, -24, 404, -41, 432, -58, 457, -77, 485, -92, 519, -120, 548, -139, 580, -153, 625, -153, 650, -158, 680, -158, 703, -158, 733, -156, 762, -153, 790, -137, 813, -130, 836, -128, 864, -130, 889, -145, 919, -156, 936, -168, 964, -194, 993, -213, 1021, -221, 1048, -226, 1067, -228, 1099, -230, 1137, -232, 1159, -234, 1184, -238, 1203, -242, 1224, -257, 1241, -268, 1260, -272, 1290, -272, 1336, -255, 1362, -242, 1387, -223, 1416, -195, 1480, -179, 1544, -159, 1581, -125, 1625, -108, 1676, -83, 1714, -54, 1753, -38, 1780, -20, 1801, -5, 1839, -7, 1856, -9, 1890, -9, 1917, -9, 1945, -18, 1976, -20, 2004, -28, 2036, -41, 2065, -43, 2110, -54, 2150, -62, 2180, -71, 2214, -79, 2246, -81, 2273, -81, 2311, -69, 2345, -62, 2373, -39, 2404, -22, 2451, -3, 2485, -1, 2529, -9, 2572, -33, 2597, -39, 2623, -39, 2635, -35, 2669, -22, 2686, -14, 2697, -7, 2731, 1, 2773, 10, 2799, 16, 2837, 22, 2873, 37, 2921, 44, 2941, 44, 2974, 44, 2989, 41, 3021, 35, 3044, 27, 3057, 18, 3106, 12, 3127, 3, 3150, 3, 3191, 1, 3293, -127, 3368, -346, 3375, 303, -4898, 442, -4072, -1968)

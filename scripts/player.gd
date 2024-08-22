@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var SPEED = 0
 var momentum = 0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -225.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,9 +25,9 @@ func _physics_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 
 	# Variables for handling movement
-	var acceleration = 40  # Adjust this for faster/slower acceleration
-	var max_speed = 100    # Maximum speed
-	var friction = 10      # Adjust this for faster/slower deceleration
+	var acceleration = 20  # Adjust this for faster/slower acceleration
+	var max_speed = 50    # Maximum speed
+	var friction = 5      # Adjust this for faster/slower deceleration
 	var gravity = 10       # Gravity value
 	# Flip character based on direction
 	if direction > 0:
