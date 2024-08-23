@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://b10yw1uf5smas"]
 
-[ext_resource type="Texture2D" uid="uid://bjv3cgmbqdfb6" path="res://sprites/player placeholder.png" id="1_ky8xv"]
+[ext_resource type="Texture2D" uid="uid://dfjsuwoiwv2wb" path="res://sprites/player model.png" id="1_nu412"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnoip"]
-atlas = ExtResource("1_ky8xv")
-region = Rect2(0, 0, 13, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1vxa"]
+atlas = ExtResource("1_nu412")
+region = Rect2(0, 0, 10, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxh50"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rnoip")
+"texture": SubResource("AtlasTexture_b1vxa")
 }],
 "loop": true,
 "name": &"Idle",
@@ -18,10 +18,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rvm5s"]
-radius = 7.0
+radius = 5.0
 height = 20.0
 
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(5.48, 5.48)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.25, 0.25)
@@ -31,6 +32,7 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_rvm5s")
 
 [node name="Timer" type="Timer" parent="."]
