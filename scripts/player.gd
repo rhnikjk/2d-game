@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var SPEED = 0
 var momentum = 0
-const JUMP_VELOCITY = -225.0
+const JUMP_VELOCITY = -240.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -26,9 +26,9 @@ func _physics_process(delta):
 
 	# Variables for handling movement
 	var acceleration = 20  # Adjust this for faster/slower acceleration
-	var max_speed = 50    # Maximum speed
+	var max_speed = 60    # Maximum speed
 	var friction = 5      # Adjust this for faster/slower deceleration
-	var gravity = 10       # Gravity value
+	var gravity = 7      # Gravity value
 	# Flip character based on direction
 	if direction > 0:
 		sprite.flip_h = false
