@@ -34,7 +34,10 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	elif direction < 0:
 		sprite.flip_h = true
-
+	if direction == 0:
+		sprite.play("Idle")
+	else:
+		sprite.play("run")
 	# Apply acceleration or deceleration
 	if is_on_floor():
 		if direction != 0:
