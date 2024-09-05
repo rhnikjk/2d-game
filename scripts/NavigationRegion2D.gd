@@ -1,16 +1,14 @@
-@tool
-extends StaticBody2D
+extends NavigationRegion2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not Engine.is_editor_hint():
-		var coll := CollisionPolygon2D.new()
+		var coll := 
 		coll.polygon = $Polygon2D.polygon
 		add_child(coll)
-		var navi := NavigationPolygon.new()
-		navi.polygon = $Polygon2D.polygon
-		add_child(NavigationRegion2D)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
