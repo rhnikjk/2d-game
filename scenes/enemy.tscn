@@ -1,36 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://obakfxkmu7kc"]
+[gd_scene load_steps=7 format=3 uid="uid://obakfxkmu7kc"]
 
-[sub_resource type="GDScript" id="GDScript_rxajt"]
+[ext_resource type="Texture2D" uid="uid://d1n8ikupvstjd" path="res://sprites/enemy.png" id="1_mlf8i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hynqm"]
+vertices = PackedVector2Array(-2022, -592, -2223, -846, 6225, -928, -1556, -337, -853, -81, -853, -80, -1556, -336, -475, -51, 1268, -271, 6211, -102, 6132, -80, 6027, 70, 5726, 70, 5500, -95, 5164, -187, 4508, -172, 4032, 92, 3657, -37, 882, -96, 632, -157, 4880, -88, 2554, 40, 1960, 84, 3238, 92, 359, -13, 170, 40, -149, 46)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 4, 6, 3, 2, 8), PackedInt32Array(2, 9, 10), PackedInt32Array(2, 10, 11, 12, 13), PackedInt32Array(2, 13, 14), PackedInt32Array(15, 16, 17), PackedInt32Array(8, 18, 19), PackedInt32Array(14, 20, 15, 2), PackedInt32Array(21, 22, 8), PackedInt32Array(17, 23, 21, 8, 2), PackedInt32Array(24, 25, 26, 7, 19), PackedInt32Array(2, 15, 17), PackedInt32Array(7, 8, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2244, -856, -2029, -584, -1561, -328, -854, -71, -477, -41, -152, 57, 173, 50, 362, -3, 633, -146, 883, -86, 1268, -260, 1958, 95, 2554, 50, 3241, 103, 3657, -26, 4034, 103, 4510, -161, 4880, -78, 5164, -177, 5496, -86, 5723, 80, 6032, 80, 6138, -71, 6221, -94, 6236, -939)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="GDScript" id="GDScript_kgal6"]
 script/source = "extends CharacterBody2D
 
+# Speed of the enemy
+var speed = 200
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+# Reference to the player's position
+var target_position = Vector2.ZERO
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+# Reference to the NavigationAgent2D
+@onready var nav_agent = $NavigationAgent2D
+var player : Node2D
+func _ready():
+	player = get_node(\"player\")
+	# Set the max speed of the NavigationAgent2D
+	nav_agent.max_speed = speed
+	# Set the pathfinding target (in this case, it's the player's position)
+	nav_agent.target_position = player.global_position  # Adjust the path as needed
 
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"move_left\", \"move_right\")
+func _process(delta):
 	
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if player:
+		target_position = player.global_position
+		nav_agent.target_position = target_position
 
-	move_and_slide()
+		# Get the next point on the path
+		var direction = nav_agent.get_next_path_position() - global_position
+
+		# If there's a valid path, move towards the target
+		if direction.length() > 1:
+			direction = direction.normalized() * speed
+			velocity = direction  # Assign the direction to velocity
+			
+			# Move the character using velocity
+			move_and_slide()
 "
 
-[node name="enemy" type="CharacterBody2D"]
-script = SubResource("GDScript_rxajt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbt21"]
+atlas = ExtResource("1_mlf8i")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65pto"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbt21")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0uus"]
+radius = 3.0
+height = 18.0
+
+[node name="enemy" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_hynqm")
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_kgal6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemy"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+sprite_frames = SubResource("SpriteFrames_65pto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_d0uus")
