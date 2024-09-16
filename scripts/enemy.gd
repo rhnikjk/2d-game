@@ -15,14 +15,14 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# Get direction of player (-1 left, 0 unchanged, 1 right)
 	# Get the input direction and handle the movement/deceleration.
 	# Get direction of player (-1 left, 0 unchanged, 1 right)
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction = Input.get_axis("ui_left", "ui_right")
 
 	# Variables for handling movement
 	var acceleration = 20  # Adjust this for faster/slower acceleration
@@ -30,19 +30,14 @@ func _physics_process(delta):
 	var friction = 5      # Adjust this for faster/slower deceleration
 	var gravity = 7      # Gravity value
 	# Flip character based on direction
-	
 	if direction > 0:
 		sprite.flip_h = false
 	elif direction < 0:
 		sprite.flip_h = true
-	if is_on_floor():
-		if direction == 0:
-			sprite.play("Idle")
-		else:
-			sprite.play("run")
+	if direction == 0:
+		sprite.play("Idle")
 	else:
-		sprite.play("jump")
-	
+		sprite.play("run")
 	# Apply acceleration or deceleration
 	if is_on_floor():
 		if direction != 0:
@@ -64,6 +59,4 @@ func _physics_process(delta):
 	
 
 	move_and_slide()
-func _on_area_2d_area_entered(area):
-	sprite.play("dead")
-	print("dead")
+
