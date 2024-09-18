@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7et7m"]
 [ext_resource type="Texture2D" uid="uid://dfjsuwoiwv2wb" path="res://sprites/player model.png" id="1_nu412"]
 [ext_resource type="Texture2D" uid="uid://d1n8ikupvstjd" path="res://sprites/enemy.png" id="2_qlrok"]
+[ext_resource type="Texture2D" uid="uid://bjv3cgmbqdfb6" path="res://sprites/player placeholder.png" id="3_2lj4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxpoq"]
 atlas = ExtResource("1_nu412")
@@ -19,10 +20,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qda0y"]
 atlas = ExtResource("1_nu412")
 region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tkkt"]
-atlas = ExtResource("2_qlrok")
-region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ydk36"]
 atlas = ExtResource("2_qlrok")
@@ -85,7 +82,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2tkkt")
+"texture": ExtResource("3_2lj4y")
 }],
 "loop": true,
 "name": &"dead",
@@ -148,7 +145,7 @@ script = ExtResource("1_7et7m")
 position = Vector2(0, 1.49012e-08)
 scale = Vector2(1.03846, 1.02632)
 sprite_frames = SubResource("SpriteFrames_bxh50")
-animation = &"Idle"
+animation = &"dead"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

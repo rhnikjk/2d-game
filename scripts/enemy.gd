@@ -26,7 +26,7 @@ func _physics_process(delta):
 
 	# Variables for handling movement
 	var acceleration = 20  # Adjust this for faster/slower acceleration
-	var max_speed = 60    # Maximum speed
+	var max_speed = 30    # Maximum speed
 	var friction = 5      # Adjust this for faster/slower deceleration
 	var gravity = 7      # Gravity value
 	# Flip character based on direction
