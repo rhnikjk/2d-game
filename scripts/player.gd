@@ -68,8 +68,9 @@ func _physics_process(delta):
 		
 		move_and_slide()
 func _on_area_2d_area_entered(area):
-	gyatt += 1
-	if gyatt == 5:
-		rizz = 1
-	sprite.play("dead")
-	print("dead")
+	if area.is_in_group("enemy"):
+		gyatt += 1
+		if gyatt == 5:
+			rizz = 1
+		sprite.play("dead")
+		print("dead")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://b10yw1uf5smas"]
+[gd_scene load_steps=23 format=3 uid="uid://b10yw1uf5smas"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7et7m"]
 [ext_resource type="Texture2D" uid="uid://dfjsuwoiwv2wb" path="res://sprites/player model.png" id="1_nu412"]
 [ext_resource type="Texture2D" uid="uid://d1n8ikupvstjd" path="res://sprites/enemy.png" id="2_qlrok"]
 [ext_resource type="Texture2D" uid="uid://bjv3cgmbqdfb6" path="res://sprites/player placeholder.png" id="3_2lj4y"]
+[ext_resource type="PackedScene" uid="uid://87n6rwueixac" path="res://scenes/character_body_2d.tscn" id="5_bncph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxpoq"]
 atlas = ExtResource("1_nu412")
@@ -159,5 +160,7 @@ shape = SubResource("CapsuleShape2D_rvm5s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 2.55474)
 shape = SubResource("CapsuleShape2D_mswjo")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_bncph")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
