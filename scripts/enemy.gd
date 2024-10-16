@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-var gyatt = 0
+var health = 0
 var detect = 0
 var SPEED = 0
 var momentum = 0
+var spn = 0
 const JUMP_VELOCITY = -240.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,6 +15,7 @@ func _physics_process(delta):
 		# Add the gravity.
 		if not is_on_floor():
 			velocity.y += gravity * delta
+
 
 		# Handle jump.
 		if Input.is_action_just_pressed("ui_up") and is_on_floor():
@@ -27,7 +29,7 @@ func _physics_process(delta):
 
 		# Variables for handling movement
 		var acceleration = 20  # Adjust this for faster/slower acceleration
-		var max_speed = 30    # Maximum speed
+		var max_speed = 32    # Maximum speed
 		var friction = 5      # Adjust this for faster/slower deceleration
 		var gravity = 7      # Gravity value
 		# Flip character based on direction
@@ -37,8 +39,10 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		if direction == 0:
 			sprite.play("Idle")
+			sprite.play("e")
 		else:
 			sprite.play("run")
+			sprite.play("e")
 		# Apply acceleration or deceleration
 		if is_on_floor():
 			if direction != 0:
@@ -63,7 +67,20 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("bullet"):
-		detect = 1
-		velocity.y = -100000
-		sprite.play("dead")
-		print("dead")
+		health +=1
+		if health == 2:
+			spn += 1
+			if spn == 2:
+				velocity.y = -100000000000
+			else:
+				detect = 1
+				health +=1
+				velocity.y = -5000
+				health = 0
+				sprite.play("dead")
+				sprite.play("e")
+				sprite.play("e")
+				sprite.play("e")
+				sprite.play("e")
+				sprite.play("e")
+				print("deadd")

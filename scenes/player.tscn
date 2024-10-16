@@ -1,10 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://b10yw1uf5smas"]
+[gd_scene load_steps=33 format=3 uid="uid://b10yw1uf5smas"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7et7m"]
 [ext_resource type="Texture2D" uid="uid://dfjsuwoiwv2wb" path="res://sprites/player model.png" id="1_nu412"]
 [ext_resource type="Texture2D" uid="uid://d1n8ikupvstjd" path="res://sprites/enemy.png" id="2_qlrok"]
 [ext_resource type="Texture2D" uid="uid://bjv3cgmbqdfb6" path="res://sprites/player placeholder.png" id="3_2lj4y"]
 [ext_resource type="PackedScene" uid="uid://87n6rwueixac" path="res://scenes/character_body_2d.tscn" id="5_bncph"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="6_u5i32"]
+[ext_resource type="Script" path="res://scripts/bul2.gd" id="7_5r30i"]
+[ext_resource type="Script" path="res://scripts/bul3.gd" id="8_b8xac"]
+[ext_resource type="Script" path="res://scripts/bul4.gd" id="9_sy6ub"]
+[ext_resource type="Script" path="res://scripts/bul5.gd" id="10_nqvdm"]
+[ext_resource type="Script" path="res://scripts/bul6.gd" id="11_gxtrw"]
+[ext_resource type="Script" path="res://scripts/bul7.gd" id="12_c61vv"]
+[ext_resource type="Script" path="res://scripts/bul8.gd" id="13_416tx"]
+[ext_resource type="Script" path="res://scripts/bul9.gd" id="14_7rwvq"]
+[ext_resource type="Script" path="res://scripts/bul10.gd" id="15_8ywnp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxpoq"]
 atlas = ExtResource("1_nu412")
@@ -162,5 +172,46 @@ position = Vector2(0, 2.55474)
 shape = SubResource("CapsuleShape2D_mswjo")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(4.74453, 0.547445)
+
+[node name="CharacterBody2D8" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(5.29197, -0.547443)
+script = ExtResource("6_u5i32")
+
+[node name="CharacterBody2D9" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(6.38686, -1.09489)
+script = ExtResource("7_5r30i")
+
+[node name="CharacterBody2D10" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(4.56204, -0.364963)
+script = ExtResource("8_b8xac")
+
+[node name="CharacterBody2D11" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(2.91971, -0.182481)
+script = ExtResource("9_sy6ub")
+
+[node name="CharacterBody2D12" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(4.37956, -1.27737)
+script = ExtResource("10_nqvdm")
+
+[node name="CharacterBody2D13" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(5.29197, -0.547445)
+script = ExtResource("11_gxtrw")
+
+[node name="CharacterBody2D14" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(5.10949, 0.182484)
+script = ExtResource("12_c61vv")
+
+[node name="CharacterBody2D15" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(2.0073, -1.09489)
+script = ExtResource("13_416tx")
+
+[node name="CharacterBody2D16" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(4.92701, -2.18978)
+script = ExtResource("14_7rwvq")
+
+[node name="end of bul" parent="." instance=ExtResource("5_bncph")]
+position = Vector2(1.82482, 0.547445)
+script = ExtResource("15_8ywnp")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

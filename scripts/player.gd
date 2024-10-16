@@ -4,7 +4,7 @@ var gyatt = 0
 var rizz = 0
 var SPEED = 0
 var momentum = 0
-const JUMP_VELOCITY = -240.0
+const JUMP_VELOCITY = -190
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -60,7 +60,8 @@ func _physics_process(delta):
 		else:
 		# Apply gravity if in the air
 			velocity.y += gravity
-
+			velocity.x = velocity.x /1.1
+	
 
 
 			position.x += velocity.x * delta
@@ -70,7 +71,7 @@ func _physics_process(delta):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"):
 		gyatt += 1
-		if gyatt == 5:
+		if gyatt == 8:
 			rizz = 1
 		sprite.play("dead")
 		print("dead")

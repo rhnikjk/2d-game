@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name bullet
 var detect = 0
 const SPEED = 300.0
 var move =0
@@ -9,10 +10,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("bullet left", "shoot")
+	var direction = Input.get_axis("bullet left", "sh0")
 	if direction == 1:
 		move = 1
-		velocity.x = move * SPEED *-1
+		velocity.x = move * SPEED*-1
 		
 
 	move_and_slide()

@@ -30,5 +30,4 @@ sprite_frames = SubResource("SpriteFrames_bbp6x")
 [node name="bulet" type="Area2D" parent="." groups=["bullet"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bulet"]
-position = Vector2(-5, 0.5)
 shape = SubResource("RectangleShape2D_e3gei")
