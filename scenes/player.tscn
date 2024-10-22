@@ -171,46 +171,46 @@ shape = SubResource("CapsuleShape2D_rvm5s")
 position = Vector2(0, 2.55474)
 shape = SubResource("CapsuleShape2D_mswjo")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(4.74453, 0.547445)
 
-[node name="CharacterBody2D8" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D8" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(5.29197, -0.547443)
 script = ExtResource("6_u5i32")
 
-[node name="CharacterBody2D9" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D9" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(6.38686, -1.09489)
 script = ExtResource("7_5r30i")
 
-[node name="CharacterBody2D10" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D10" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(4.56204, -0.364963)
 script = ExtResource("8_b8xac")
 
-[node name="CharacterBody2D11" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D11" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(2.91971, -0.182481)
 script = ExtResource("9_sy6ub")
 
-[node name="CharacterBody2D12" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D12" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(4.37956, -1.27737)
 script = ExtResource("10_nqvdm")
 
-[node name="CharacterBody2D13" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D13" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(5.29197, -0.547445)
 script = ExtResource("11_gxtrw")
 
-[node name="CharacterBody2D14" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D14" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(5.10949, 0.182484)
 script = ExtResource("12_c61vv")
 
-[node name="CharacterBody2D15" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D15" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(2.0073, -1.09489)
 script = ExtResource("13_416tx")
 
-[node name="CharacterBody2D16" parent="." instance=ExtResource("5_bncph")]
+[node name="CharacterBody2D16" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(4.92701, -2.18978)
 script = ExtResource("14_7rwvq")
 
-[node name="end of bul" parent="." instance=ExtResource("5_bncph")]
+[node name="end of bul" parent="." groups=["bullet"] instance=ExtResource("5_bncph")]
 position = Vector2(1.82482, 0.547445)
 script = ExtResource("15_8ywnp")
 

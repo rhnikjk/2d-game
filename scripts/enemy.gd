@@ -68,13 +68,13 @@ func _physics_process(delta):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("bullet"):
 		health +=1
+		print(health)
 		if health == 2:
 			spn += 1
 			if spn == 2:
 				velocity.y = -100000000000
 			else:
 				detect = 1
-				health +=1
 				velocity.y = -5000
 				health = 0
 				sprite.play("dead")
